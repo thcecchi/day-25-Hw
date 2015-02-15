@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hoop Game</title>
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/compiledStyle.css">
+
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <form id="playerInfo" action="index.html">
+        <input type="text" name="playerName" value="" class="playerName" placeholder="who you playin as?">
+        <select class="skillSelect">
+          <option value="floorGeneral">Floor General</option>
+          <option value="threePtSpecialist">3-point Specialist</option>
+          <option value="posertizer">Posterizer</option>
+        </select>
+        <input type="button" name="submit" value="Submit" class="infoSubmit">
+      </form>
+
+      <form id="playerAction" action="index.html">
+        <h5>Offense</h5>
+        <input type="submit" name="pass" value="Pass" class="pass">
+        <input type="submit" name="shoot" value="Shoot" class="shoot">
+        <h5>Defense</h5>
+        <input type="submit" name="steal" value="Steal" class="steal">
+        <input type="submit" name="block" value="Block" class="block">
+      </form>
+
+      <h3>Score</h3>
+
+    </div>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/foundation/js/foundation.js"></script>
+    <script src="main.js"></script>
+
+
+  </body>
+</html>

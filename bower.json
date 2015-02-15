@@ -1,0 +1,18 @@
+{
+  "name": "day25Hw",
+  "version": "0.0.0",
+  "authors": [
+    "Tyler Cecchi <thcecchi@gmail.com>"
+  ],
+  "description": "constuctor game",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "tylercecchi.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
