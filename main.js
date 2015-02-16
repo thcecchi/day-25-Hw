@@ -177,7 +177,6 @@ var game = {
       // Build player and opponent objects
       game.playersCreate()
       console.log("you have first possession")
-      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
     });
 
   },
@@ -205,6 +204,7 @@ var game = {
 
       console.log(opponent1)
       console.log(player1)
+      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
     }
 
     else if($('.skillSelect').val() == "threePtSpecialist") {
@@ -222,6 +222,7 @@ var game = {
       })
       console.log(opponent1)
       console.log(player1)
+      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
     }
 
     else {
@@ -239,6 +240,7 @@ var game = {
       })
       console.log(opponent1)
       console.log(player1)
+      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
     }
 
   // playerMoves ////
