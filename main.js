@@ -2,6 +2,29 @@
 playerScore = [0]
 opponentScore = [0]
 
+var gameScoring = function () {
+  playerTotal = playerScore.reduce(function(a, b) {
+    return a + b;
+  });
+  console.log(playerTotal)
+
+  opponentTotal = opponentScore.reduce(function(a, b) {
+    return a + b;
+  });
+  console.log(opponentTotal)
+
+  if (playerTotal == 10) {
+    console.log("you win!")
+  }
+
+  else if (opponentTotal == 10) {
+    console.log('you lost')
+  }
+
+  $('.playerScore').html('<h5>'+ playerTotal + '</h5>');
+  $('.opponentScore').html('<h5>'+ opponentTotal + '</h5>');
+}
+
 // constructors
 
 function ball (obj) {
@@ -29,14 +52,14 @@ function player (obj) {
     var blockNum = opponent.defense * defMultiplier
 
     if (shotNum > blockNum) {
-    ball = new ball();
-      console.log(ball)
+      ball[i] = new ball();
+      console.log(ball[i])
 
-      if (ball.trajectory > 3) {
+      if (ball[i].trajectory > 3) {
         console.log("shot is good")
         //add point to player
         playerScore.push(1)
-        // game.gameScoring();
+        gameScoring();
 
       }
 
@@ -88,8 +111,7 @@ function player (obj) {
         console.log("your opponent made the shot")
         //add point to opponent
         opponentScore.push(1)
-        // game.gameScoring();
-
+        gameScoring();
         // switch to offense screen
       }
 
@@ -117,7 +139,7 @@ function player (obj) {
       console.log("you got faked out and your opponent scored")
       // add point to opponent
       opponentScore.push(1)
-      // game.gameScoring();
+      gameScoring();
       // switch to offense screen
 
     }
@@ -147,34 +169,20 @@ var game = {
 
   init: function () {
     game.initEvents();
-    game.gameScoring();
-
   },
 
   initEvents: function () {
 
     $('#wrapper').on('click', '.infoSubmit', function () {
-    // Build player and opponent objects
-    game.playersCreate()
-    console.log("you have first possession")
+      // Build player and opponent objects
+      game.playersCreate()
+      console.log("you have first possession")
+      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
     });
 
   },
 
   initStyle: function () {
-
-  },
-
-  gameScoring: function () {
-    playerTotal = playerScore.reduce(function(a, b) {
-      return a + b;
-    });
-    console.log(playerTotal)
-
-    opponentTotal = opponentScore.reduce(function(a, b) {
-      return a + b;
-    });
-    console.log(opponentTotal)
 
   },
 
@@ -243,45 +251,27 @@ var game = {
       player1.shoot(opponent1)
       // opponent move
       console.log("your opponent has the ball and you are on defense")
-
-      // defense
-
-        // steal
-        $('#wrapper').on('click', '.steal', function (e) {
-          e.preventDefault
-          player1.steal(opponent1)
-        })
-
-        // block
-        $('#wrapper').on('click', '.block', function (e) {
-          e.preventDefault
-          player1.block(opponent1)
-        })
-
     })
 
     // dribble
     $('#wrapper').on('click', '.dribble', function (e) {
       e.preventDefault
       player1.dribble(opponent1)
+    })
 
-    // defense
+    // steal
+    $('#wrapper').on('click', '.steal', function (e) {
+      e.preventDefault
+      player1.steal(opponent1)
+    })
 
-      // steal
-      $('#wrapper').on('click', '.steal', function (e) {
-        e.preventDefault
-        player1.steal(opponent1)
-      })
-
-      // block
-      $('#wrapper').on('click', '.block', function (e) {
-        e.preventDefault
-        player1.block(opponent1)
-      })
+    // block
+    $('#wrapper').on('click', '.block', function (e) {
+      e.preventDefault
+      player1.block(opponent1)
     })
 
  }
-
 
 }
 
