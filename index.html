@@ -10,31 +10,51 @@
   <body>
     <div id="wrapper">
 
-      <form id="playerInfo" action="index.html">
-        <input type="text" name="playerName" value="" class="playerName" placeholder="who you playin as?">
-        <select class="skillSelect">
-          <option value="floorGeneral">Floor General</option>
-          <option value="threePtSpecialist">3-point Specialist</option>
-          <option value="posertizer">Posterizer</option>
-        </select>
-        <input type="button" name="submit" value="Submit" class="infoSubmit">
-      </form>
+        <div class="row">
+          <h1>Iron Yard Jams</h1>
 
-      <form id="playerAction" action="index.html">
-        <h5>Offense</h5>
-        <input type="button" name="dribble" value="Dribble Move" class="dribble">
-        <input type="button" name="shoot" value="Shoot" class="shoot">
-        <h5>Defense</h5>
-        <input type="button" name="steal" value="Steal" class="steal">
-        <input type="button" name="block" value="Block" class="block">
-      </form>
+        <form id="playerInfo" class="large-5 columns large-centered" action="index.html">
+          <h3>What's Your Name?</h3>
+          <input type="text" name="playerName" value="" class="playerName" placeholder="who you playin as?">
+          <h3>What type of player are you?</h3>
+          <select class="skillSelect">
+            <option value="floorGeneral">Floor General</option>
+            <option value="threePtSpecialist">3-point Specialist</option>
+            <option value="postertizer">Posterizer</option>
+          </select>
+          <input type="button" name="submit" value="Submit" class="infoSubmit">
+        </form>
+      </div>
 
-      <h3>Score</h3>
-      <h5 class="playerBoardName">Home</h5><h5 class="playerScore">0</h5>
-      <h5>Away</h5><h5 class="opponentScore">0</h5>
+    <div id="mainScreen">
 
+      <div class="row">
+        <h3 class="large-2 large-centered columns">Score</h3>
+      </div>
+
+      <div class="row">
+        <h5 class="playerBoardName large-1 columns">Home</h5><h5 class="playerScore large-1 columns">0</h5>
+        <h5 class="large-1 large-offset-8 columns">Away</h5><h5 class="opponentScore large-1 columns">0</h5>
+      </div>
+
+      <div class="row">
+        <form id="playerAction" class="large-3 columns" action="index.html">
+          <div id="offenseControls">
+            <h5>Offense</h5>
+            <input type="button" name="dribble" value="Dribble Move" class="dribble">
+            <input type="button" name="shoot" value="Shoot" class="shoot">
+          </div>
+          <div id="defenseControls">
+            <h5>Defense</h5>
+            <input type="button" name="steal" value="Steal" class="steal">
+            <input type="button" name="block" value="Block" class="block">
+          </div>
+        </form>
+        <div id="actionContainer" class="large-6 columns end">
+        </div>
+      </div>
     </div>
-
+  </div>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>

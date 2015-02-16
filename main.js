@@ -14,10 +14,12 @@ var gameScoring = function () {
   console.log(opponentTotal)
 
   if (playerTotal == 10) {
+    $('#actionContainer').prepend('<h4>YOU WON</h4>').css('color','green')
     console.log("you win!")
   }
 
   else if (opponentTotal == 10) {
+    $('#actionContainer').prepend('<h4>YOU LOST</h4>').css('color','red')
     console.log('you lost')
   }
 
@@ -56,24 +58,31 @@ function player (obj) {
       console.log(ball[i])
 
       if (ball[i].trajectory > 3) {
-        console.log("shot is good")
+        $('#actionContainer').prepend('<i class="fa fa-dribbble"></i><h6>shot is GOOD</h6>').css('color','green')
         //add point to player
         playerScore.push(1)
         gameScoring();
+        // switch to defense screen
+        $('#offenseControls').hide();
+        $('#defenseControls').show();
 
       }
 
       else {
+        $('#actionContainer').prepend('<i class="fa fa-ban"></i><h6>you missed the shot</h6>').css('color','red')
         console.log("you missed the shot")
         // switch to defense screen
-
+        $('#offenseControls').hide();
+        $('#defenseControls').show();
       }
     }
 
     else {
+      $('#actionContainer').prepend('<i class="fa fa-bold"></i><h6>your shot was blocked by the defender</h6>')
       console.log('your shot was blocked by the defender')
       // switch to defense screen
-
+      $('#offenseControls').hide();
+      $('#defenseControls').show();
     }
   }
  }
@@ -84,14 +93,18 @@ function player (obj) {
     var dribbleNum = this.offense * ball[i].control
 
     if (dribbleNum > 400) {
+      $('#actionContainer').prepend('<i class="fa fa-street-view"></i><h6>you faked out your opponent and have a wide open shot</h6>')
       console.log("you faked out your opponent and have a wide open shot")
       this.offense += 25
       console.log("player 1 offense is now " + this.offense)
     }
 
     else {
+      $('#actionContainer').prepend('<i class="fa fa-hand-o-right"></i><h6>you lost your dribble and turned the ball over</h6>')
       console.log('you lost your dribble and turned the ball over')
       // switch to defense screen
+      $('#offenseControls').hide();
+      $('#defenseControls').show();
     }
   }
  }
@@ -108,22 +121,31 @@ function player (obj) {
        ball[i] = new ball();
 
       if (ball[i].trajectory > 3) {
+        $('#actionContainer').prepend('<i class="fa fa-dribbble"></i><h6>your opponent made the shot</h6>').css('color','red')
         console.log("your opponent made the shot")
         //add point to opponent
         opponentScore.push(1)
         gameScoring();
         // switch to offense screen
+        $('#defenseControls').hide();
+        $('#offenseControls').show();
       }
 
       else {
+        $('#actionContainer').prepend('<i class="fa fa-ban"></i><h6>your opponent missed the shot</h6>')
         console.log("your opponent missed the shot")
         // switch to offense screen
+        $('#offenseControls').show();
+        $('#defenseControls').hide();
       }
     }
 
     else {
+      $('#actionContainer').prepend('<i class="fa fa-bold"></i><h6>you blocked your opponents shot</h6>')
       console.log('you blocked your opponents shot')
       // switch to offense screen
+      $('#offenseControls').show();
+      $('#defenseControls').hide();
     }
    }
   }
@@ -136,17 +158,23 @@ function player (obj) {
     var stealNum = this.defense * ball[i].control
 
     if (stealNum > dribbleNum) {
+      $('#actionContainer').prepend('<i class="fa fa-dribbble"></i><h6>you got faked out and your opponent scored</h6>').css('color','red')
       console.log("you got faked out and your opponent scored")
       // add point to opponent
       opponentScore.push(1)
       gameScoring();
       // switch to offense screen
+      $('#offenseControls').show();
+      $('#defenseControls').hide();
 
     }
 
     else {
+      $('#actionContainer').prepend('<i class="fa fa-hand-o-left"></i><h6>you stole the ball and now its your turn</h6>').css('color','green')
       console.log('you stole the ball and now its your turn')
       // switch to offense screen
+      $('#offenseControls').show();
+      $('#defenseControls').hide();
     }
 
   }
@@ -168,6 +196,7 @@ function opponent (obj) {
 var game = {
 
   init: function () {
+    game.loadSignup();
     game.initEvents();
   },
 
@@ -175,7 +204,12 @@ var game = {
 
     $('#wrapper').on('click', '.infoSubmit', function () {
       // Build player and opponent objects
-      game.playersCreate()
+      $('#mainScreen').show();
+      $('#playerInfo').hide();
+      $('#offenseControls').show();
+      $('#defenseControls').hide();
+      game.playersCreate();
+      $('#actionContainer').prepend('<h6>you have first possession</h6>')
       console.log("you have first possession")
     });
 
@@ -183,6 +217,10 @@ var game = {
 
   initStyle: function () {
 
+  },
+
+  loadSignup: function () {
+    $('#mainScreen').hide();
   },
 
   playersCreate: function () {
