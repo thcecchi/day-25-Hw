@@ -1,36 +1,51 @@
+.bg {
+  background-image: url("../img/nba_game.jpg");
+  opacity: .8;
+  }
+
 h1 {
   text-align: center;
   font-weight: bold;
   padding-top: 5%;
-  font-size: 4em;
+  font-size: 3.75em;
 }
 
 #actionContainer {
-  background: firebrick;
-  opacity: .4;
 
   i {
     display: inline-block;
-    font-size: 1.5em;
+    font-size: 2em;
+    padding-right: 5%;
+    width: 10%;
   }
 
   h6 {
     display: inline-block;
+    text-align: center;
+    width: 90%;
   }
 }
 
 #playerAction {
   display: inline-block;
   margin-top: 10%;
+  padding: 5%;
+  border-radius: 5%;
+  background: black;
+  opacity: .8;
+
+  h4 {
+    color: white;
+  }
+
 }
 
 #playerInfo {
-  margin-top: 7%;
+  margin-top: 5%;
   background-image: url("../img/VCarter.jpg");
   opacity: .8;
   padding: 5%;
   border-radius: 5%;
-  // border: 2px solid black;
 
   h3 {
     color: white;

@@ -278,7 +278,8 @@ var game = {
       })
       console.log(opponent1)
       console.log(player1)
-      $('.playerBoardName').html('<h5>'+ player1.name +'</h5>')
+      $('.playerBoardName').html('<h3>'+ player1.name +'</h3>')
+      $('body').addClass("bg");
     }
 
   // playerMoves ////
